@@ -37,7 +37,7 @@ fRtsEnable = (#const RTS_CONTROL_ENABLE) `shift` 12
 
 instance Storable SerialPortSettings where
   sizeOf _ = #{size DCB}
-  alignment = 16
+  alignment _ = 16
   poke buf settings = do
     #{poke DCB, DCBlength} buf (sizeOf settings)
     #{poke DCB, BaudRate} buf (fromIntegral (commSpeedToBaudRate (commSpeed settings)) :: DWORD)
@@ -138,7 +138,7 @@ data COMMTIMEOUTS = COMMTIMEOUTS
 
 instance Storable COMMTIMEOUTS where
   sizeOf _ = #{size COMMTIMEOUTS}
-  alignment = 16
+  alignment _ = 16
   poke buf ct = do
     #{poke COMMTIMEOUTS, ReadIntervalTimeout} buf (readIntervalTimeout ct)
     #{poke COMMTIMEOUTS, ReadTotalTimeoutMultiplier} buf ( readTotalTimeoutMultiplier ct)
