@@ -16,7 +16,7 @@ jobs:
       matrix:
         ghc: ['8.6', '8.8', '8.10.4', '9.0']
         cabal: ['3.0', '3.2', '3.4']
-        os: [ubuntu-18.04, ubuntu-20.04, windows-2016, windows-2019]
+        os: [ubuntu-20.04, ubuntu-22.04, windows-2019, windows-2022]
         exclude:
           # GHC 9.0 doesn't work with windows-*
           - ghc: '9.0'
