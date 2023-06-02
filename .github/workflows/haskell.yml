@@ -1,10 +1,10 @@
 name: Haskell CI
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  push
+    #    branches: [ master ]
+    #  pull_request #:
+    #    branches: [ master ]
   schedule:
     # run at the start of every day
     - cron: '0 0 * * *'
@@ -19,8 +19,6 @@ jobs:
         os: [ubuntu-20.04, ubuntu-22.04, windows-2019, windows-2022]
         exclude:
           # GHC 9.0 doesn't work with windows-*
-          - ghc: '9.0'
-            os: windows-2016
           - ghc: '9.0'
             os: windows-2019
           # GHC 9.0 with Cabal >= 3.4
