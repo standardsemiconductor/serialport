@@ -17,15 +17,6 @@ jobs:
         ghc: ['9.2']
         cabal: ['3.6']
         os: [ubuntu-20.04, windows-2022]
-        # exclude:
-          # GHC 9.0 doesn't work with windows-*
-          # - ghc: '9.0'
-          #  os: windows-2019
-          # GHC 9.0 with Cabal >= 3.4
-          #- ghc: '9.0'
-          #  cabal: '3.0'
-          #- ghc: '9.0'
-          #  cabal: '3.2' 
     name: ${{ matrix.os }} GHC ${{ matrix.ghc }} Cabal ${{ matrix.cabal }}
     steps:
     - name: Checkout
