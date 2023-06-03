@@ -14,25 +14,25 @@ jobs:
     runs-on: ${{ matrix.os }} 
     strategy:
       matrix:
-        ghc: ['8.6', '8.8', '8.10.4', '9.0']
-        cabal: ['3.0', '3.2', '3.4']
+        ghc: ['9.2', '9.4', '9.6']
+        cabal: ['3.6', '3.8', '3.10']
         os: [ubuntu-20.04, ubuntu-22.04, windows-2019, windows-2022]
-        exclude:
+        #        exclude:
           # GHC 9.0 doesn't work with windows-*
-          - ghc: '9.0'
-            os: windows-2019
+          # - ghc: '9.0'
+          #  os: windows-2019
           # GHC 9.0 with Cabal >= 3.4
-          - ghc: '9.0'
-            cabal: '3.0'
-          - ghc: '9.0'
-            cabal: '3.2' 
+          #- ghc: '9.0'
+          #  cabal: '3.0'
+          #- ghc: '9.0'
+          #  cabal: '3.2' 
     name: ${{ matrix.os }} GHC ${{ matrix.ghc }} Cabal ${{ matrix.cabal }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup Haskell
-      uses: haskell/actions/setup@v1
+      uses: haskell/actions/setup@v2
       with:
         ghc-version: ${{ matrix.ghc }}
         cabal-version: ${{ matrix.cabal }}
