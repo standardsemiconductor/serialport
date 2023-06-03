@@ -3,8 +3,8 @@ name: Haskell CI
 on:
   push:
     #    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    #pull_request:
+    #branches: [ master ]
   schedule:
     # run at the start of every day
     - cron: '0 0 * * *'
