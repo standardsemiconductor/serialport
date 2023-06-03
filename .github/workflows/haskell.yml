@@ -2,6 +2,7 @@ name: Haskell CI
 
 on:
   push:
+    branches: [master]
   pull-request:
   schedule:
     # run at the start of every day
