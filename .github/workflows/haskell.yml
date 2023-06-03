@@ -1,6 +1,8 @@
 name: Haskell CI
 
-on: [push, pull-request]
+on:
+  push:
+  pull-request:
   schedule:
     # run at the start of every day
     - cron: '0 0 * * *'
