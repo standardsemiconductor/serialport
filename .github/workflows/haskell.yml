@@ -16,7 +16,7 @@ jobs:
         ghc: ['9.4', '9.6']
         cabal: ['3.8', '3.10']
         os: [ubuntu-20.04, ubuntu-22.04, windows-2019, windows-2022]
-        exclude:
+        # exclude:
           # GHC 9.0 doesn't work with windows-*
           # - ghc: '9.0'
           #  os: windows-2019
