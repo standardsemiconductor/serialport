@@ -2,9 +2,9 @@ name: Haskell CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
   schedule:
     # run at the start of every day
     - cron: '0 0 * * *'
@@ -14,34 +14,21 @@ jobs:
     runs-on: ${{ matrix.os }} 
     strategy:
       matrix:
-        ghc: ['8.6', '8.8', '8.10.4', '9.0']
-        cabal: ['3.0', '3.2', '3.4']
-        os: [ubuntu-18.04, ubuntu-20.04, windows-2016, windows-2019]
-        exclude:
-          # GHC 9.0 doesn't work with windows-*
-          - ghc: '9.0'
-            os: windows-2016
-          - ghc: '9.0'
-            os: windows-2019
-          # GHC 9.0 with Cabal >= 3.4
-          - ghc: '9.0'
-            cabal: '3.0'
-          - ghc: '9.0'
-            cabal: '3.2' 
+        ghc: ['9.2']
+        cabal: ['3.6']
+        os: [ubuntu-20.04, windows-2022]
     name: ${{ matrix.os }} GHC ${{ matrix.ghc }} Cabal ${{ matrix.cabal }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup Haskell
-      uses: haskell/actions/setup@v1
+      uses: haskell/actions/setup@v2
       with:
         ghc-version: ${{ matrix.ghc }}
         cabal-version: ${{ matrix.cabal }}
 
-    - name: Install dependencies
+    - name: Build
       run: |
         cabal update
-        cabal build --only-dependencies --enable-tests --enable-benchmarks
-    - name: Build
-      run: cabal build --enable-tests --enable-benchmarks all
+        cabal build

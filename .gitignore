@@ -7,3 +7,4 @@ cabal-dev
 .virthualenv
 *~
 dist-newstyle/
+*.swp
