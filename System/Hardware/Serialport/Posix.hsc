@@ -1,27 +1,23 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
 {-# LANGUAGE DeriveDataTypeable       #-}
 {-# LANGUAGE LambdaCase               #-}
-{-# OPTIONS_HADDOCK hide #-}
+{-# OPTIONS_HADDOCK hide              #-}
 module System.Hardware.Serialport.Posix where
 
-import GHC.IO.Handle
-import GHC.IO.Encoding
-
-import System.Posix.IO
-import System.Posix.Types (Fd, ByteCount)
-import System.Posix.Terminal
-
+import qualified Control.Exception as Ex
+import Data.Bits
+import qualified Data.ByteString.Char8 as B
+import Data.Either
+import Data.Typeable
 import Foreign (Ptr, nullPtr, castPtr, alloca, peek, with)
 import Foreign.C
-
-import Data.Typeable
-import Data.Bits
-
-import qualified Data.ByteString.Char8 as B
-import qualified Control.Exception     as Ex
-
+import GHC.IO.Handle
+import GHC.IO.Encoding
 import System.Hardware.Serialport.Types
-
+import System.Posix.IO
+import qualified System.Posix.IO.ByteString as BIO
+import System.Posix.Types (Fd)
+import System.Posix.Terminal
 
 data SerialPort = SerialPort
   { fd           :: Fd
@@ -39,9 +35,10 @@ hOpenSerial dev settings = do
 
 
 -- |Open and configure a serial port
-openSerial :: FilePath            -- ^ Serial port, such as @\/dev\/ttyS0@ or @\/dev\/ttyUSB0@
-           -> SerialPortSettings
-           -> IO SerialPort
+openSerial
+  :: FilePath            -- ^ Serial port, such as @\/dev\/ttyS0@ or @\/dev\/ttyUSB0@
+  -> SerialPortSettings
+  -> IO SerialPort
 openSerial dev settings = do
   fd' <- openFd dev ReadWrite defaultFileFlags { noctty = True, nonBlock = True }
   setTIOCEXCL fd'
@@ -67,13 +64,10 @@ withEncoding _ fun = fun
 -- |Receive bytes, given the maximum number
 recv :: SerialPort -> Int -> IO B.ByteString
 recv port n = do
-  result <- withEncoding char8 $ Ex.try $ fdRead (fd port) count :: IO (Either IOError (String, ByteCount))
-  return $ case result of
-     Right (str, _) -> B.pack str
-     Left _         -> B.empty
+  result <- withEncoding char8 $ Ex.try $ BIO.fdRead (fd port) count :: IO (Either IOError B.ByteString)
+  return $ fromRight B.empty result
   where
     count = fromIntegral n
-
 
 -- |Send bytes
 send
