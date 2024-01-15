@@ -14,8 +14,8 @@ jobs:
     runs-on: ${{ matrix.os }} 
     strategy:
       matrix:
-        ghc: ['9.2', '9.6']
-        os: [ubuntu-20.04, windows-2022]
+        ghc: ['9.6']
+        os: [macos-12, ubuntu-20.04, windows-2022]
     name: ${{ matrix.os }} GHC ${{ matrix.ghc }}
     steps:
     - name: Checkout
