@@ -1,3 +1,9 @@
+0.5.5 (1/15/2024)
+=================
+* Fix runtime error on Windows [6](https://github.com/standardsemiconductor/serialport/pull/6)
+* Deprecate String `fdRead` [9](https://github.com/standardsemiconductor/serialport/pull/9)
+* Update to unix-2.8 [8](https://github.com/standardsemiconductor/serialport/pull/8)
+
 0.5.4 (12/02/2022)
 ==================
 * Update package dependency constraints
