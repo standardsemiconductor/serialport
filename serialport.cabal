@@ -5,7 +5,7 @@ Build-Type:     Simple
 license:        BSD3
 license-file:   LICENSE
 copyright:      (c) 2009-2011 Joris Putcuyps,
-                (c) 2020-2022 David Cox
+                (c) 2020-2023 David Cox
 author:         Joris Putcuyps, David Cox
 maintainer:     David Cox <standard.semiconductor@gmail.com>
 homepage:       https://github.com/standardsemiconductor/serialport
@@ -24,8 +24,8 @@ source-repository head
 Library
   Exposed-Modules:    System.Hardware.Serialport
   Other-Modules:      System.Hardware.Serialport.Types
-  Build-Depends:      base       >= 4.12 && < 4.17, 
-                      bytestring >= 0.11 && < 0.12
+  Build-Depends:      base       >= 4.12 && < 4.19,
+                      bytestring >= 0.11 && < 0.13
   ghc-options:        -Wall -fno-warn-orphans
   default-language: Haskell2010
     
