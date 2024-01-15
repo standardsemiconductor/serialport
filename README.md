@@ -1,6 +1,6 @@
 # Serialport
 
-![Haskell CI](https://github.com/standardsemiconductor/serialport/workflows/Haskell%20CI/badge.svg)
+[![Haskell CI](https://github.com/standardsemiconductor/serialport/actions/workflows/haskell.yml/badge.svg)](https://github.com/standardsemiconductor/serialport/actions/workflows/haskell.yml)
 [![Hackage][hackage-badge]][hackage]
 [![Hackage Dependencies][hackage-deps-badge]][hackage-deps]
 
