@@ -2,7 +2,6 @@
 
 [![Haskell CI](https://github.com/standardsemiconductor/serialport/actions/workflows/haskell.yml/badge.svg)](https://github.com/standardsemiconductor/serialport/actions/workflows/haskell.yml)
 [![Hackage][hackage-badge]][hackage]
-[![Hackage Dependencies][hackage-deps-badge]][hackage-deps]
 
 Cross platform (Linux, Windows and Mac OS) [serial port](https://en.wikipedia.org/wiki/Serial_port) interface.
 
@@ -22,8 +21,8 @@ withSerial port defaultSerialSettings $ \s -> do
 
 [Concurrently](https://hackage.haskell.org/package/async) read and write a serial port at 19200 [baud](https://learn.sparkfun.com/tutorials/serial-communication/rules-of-serial) using `hWithSerial`:
 ```haskell
-import Control.Concurrent.Async ( concurrently_ )
-import Control.Monad            ( forever )
+import Control.Concurrent.Async
+import Control.Monad
 import System.Hardware.Serialport
 import System.IO
 
@@ -56,7 +55,5 @@ serialPortSettings = defaultSerialSettings{ commSpeed = CS19200 }
 ### Running the tests
 * Run the tests: `cabal test --test-options="/dev/ttyACM0 /dev/ttyUSB0"`
 
-[hackage]:            <https://hackage.haskell.org/package/serialport>
-[hackage-badge]:      <https://img.shields.io/hackage/v/serialport.svg?color=success>
-[hackage-deps-badge]: <https://img.shields.io/hackage-deps/v/serialport.svg>
-[hackage-deps]:       <http://packdeps.haskellers.com/feed?needle=serialport>
+[hackage]:       <https://hackage.haskell.org/package/serialport>
+[hackage-badge]: <https://img.shields.io/hackage/v/serialport.svg?color=success>
