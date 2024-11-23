@@ -1,3 +1,8 @@
+0.5.6 (11/23/2024)
+==================
+* Add custom baud rates [13](https://github.com/standardsemiconductor/serialport/pull/13)
+* Update package dependency constraints
+
 0.5.5 (1/15/2024)
 =================
 * Fix runtime error on Windows [6](https://github.com/standardsemiconductor/serialport/pull/6)
