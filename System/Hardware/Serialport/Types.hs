@@ -16,7 +16,8 @@ data CommSpeed
   | CS38400
   | CS57600
   | CS115200
-  deriving (Show, Read, Eq, Bounded)
+  | CS Word32
+  deriving (Show, Read, Eq)
 
 data StopBits = One | Two
   deriving (Show, Read, Eq, Bounded)
@@ -54,4 +55,3 @@ data SerialPortSettings = SerialPortSettings
 defaultSerialSettings :: SerialPortSettings
 defaultSerialSettings =
   SerialPortSettings CS9600 8 One NoParity NoFlowControl 1
-

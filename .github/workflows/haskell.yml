@@ -28,3 +28,6 @@ jobs:
 
     - name: Build
       run: cabal build
+
+    - name: Docs
+      run: cabal haddock
