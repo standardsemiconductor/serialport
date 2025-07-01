@@ -5,7 +5,7 @@ Build-Type:     Simple
 license:        BSD3
 license-file:   LICENSE
 copyright:      (c) 2009-2011 Joris Putcuyps,
-                (c) 2020-2024 David Cox
+                (c) 2020-2025 David Cox
 author:         Joris Putcuyps, David Cox
 maintainer:     David Cox <standard.semiconductor@gmail.com>
 homepage:       https://github.com/standardsemiconductor/serialport
@@ -23,9 +23,11 @@ source-repository head
 
 Library
   Exposed-Modules:    System.Hardware.Serialport
+                      System.Hardware.Serialport.Cli
   Other-Modules:      System.Hardware.Serialport.Types
-  Build-Depends:      base       >= 4.12 && < 4.21,
-                      bytestring >= 0.11 && < 0.13
+  Build-Depends:      base                 >= 4.12 && < 4.21,
+                      bytestring           >= 0.11 && < 0.13,
+                      optparse-applicative >= 0.18 && < 0.20
   ghc-options:        -Wall -fno-warn-orphans
   default-language: Haskell2010
     
@@ -36,6 +38,16 @@ Library
     Build-Depends:    Win32 >= 2.11 && < 2.15
     Other-Modules:    System.Hardware.Serialport.Windows
                       System.Win32.Comm
+
+executable serialport
+  ghc-options:        -Wall -O2 -threaded
+  main-is:            Main.hs
+  hs-source-dirs:     exe
+  default-language:   Haskell2010
+  build-depends:      async >= 2.2 && < 2.3,
+                      base,
+                      optparse-applicative >= 0.18 && < 0.19,
+                      serialport
 
 Test-Suite Tests
   type:               exitcode-stdio-1.0
