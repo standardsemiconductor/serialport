@@ -25,10 +25,10 @@ Library
   Exposed-Modules:    System.Hardware.Serialport
                       System.Hardware.Serialport.Cli
   Other-Modules:      System.Hardware.Serialport.Types
-  Build-Depends:      base                 >= 4.12 && < 4.21,
+  Build-Depends:      base                 >= 4.12 && < 4.22,
                       bytestring           >= 0.11 && < 0.13,
                       optparse-applicative >= 0.18 && < 0.20
-  ghc-options:        -Wall -fno-warn-orphans
+  ghc-options:        -Wall
   default-language: Haskell2010
     
   if !os(windows)
