@@ -1,3 +1,9 @@
+0.6.0 (9/21/2025)
+==================
+* Remove custom baud rates [22](https://github.com/standardsemiconductor/serialport/pull/22)
+* Update package dependency constraints
+* Add `serialport` command-line executable [16](https://github.com/standardsemiconductor/serialport/pull/16)
+
 0.5.6 (11/23/2024)
 ==================
 * Add custom baud rates [13](https://github.com/standardsemiconductor/serialport/pull/13)
