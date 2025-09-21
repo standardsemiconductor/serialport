@@ -1,4 +1,4 @@
-0.6.0 (11/23/2024)
+0.6.0 (11/23/2025)
 ==================
 * Remove custom baud rates [22](https://github.com/standardsemiconductor/serialport/pull/22)
 * Update package dependency constraints
