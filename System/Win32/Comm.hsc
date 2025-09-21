@@ -230,4 +230,3 @@ commSpeedToBaudRate cs =
       CS38400 -> (#const CBR_38400)
       CS57600 -> (#const CBR_57600)
       CS115200 -> (#const CBR_115200)
-      CS b -> fromIntegral b
